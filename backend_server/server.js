@@ -3,6 +3,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const helmet = require("helmet");
+const { readdirSync } = require("fs");
 
 //SETUP ENVIRONMENT VARIABLES
 const dotenv = require("dotenv");
@@ -23,8 +24,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+
+readdirSync("./routes").map((route) => {
+  app.use("/api", require("./routes/" + route));
+});
 
 app.listen(port, () => {
   console.log(`App is listening on port ${port}`);
