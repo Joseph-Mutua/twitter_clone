@@ -4,6 +4,13 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const helmet = require("helmet");
 
+//SETUP ENVIRONMENT VARIABLES
+const dotenv = require("dotenv");
+dotenv.config();
+
+const port = process.env.PORT
+
+
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
@@ -19,6 +26,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
-app.listen(3000, () => {
-  console.log(`App is listening on port 3000`);
+app.listen(port, () => {
+  console.log(`App is listening on port ${port}`);
 });
