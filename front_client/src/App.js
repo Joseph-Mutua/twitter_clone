@@ -1,10 +1,15 @@
 import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
 
 function App() {
   return (
-    <div>
-      <h1>Mutua Twitter App</h1>
-    </div>
+    <>
+      <h1>Hiiii</h1>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+      </Routes>
+    </>
   );
 }
 
