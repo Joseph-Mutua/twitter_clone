@@ -1,4 +1,5 @@
 import React from "react";
+import { requireLogin } from "../functions/auth/requireLogin";
 
 function Home() {
   return (
