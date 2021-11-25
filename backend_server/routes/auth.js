@@ -5,6 +5,11 @@ const router = express.Router();
 const {signup, accountActivation, signin} = require("../controllers/auth");
 
 //import validators
+const {
+  userSignupValidator,
+  userSigninValidator,
+} = require("../validators/auth");
+const { runValidation } = require("../validators");
 
 router.post("/signup", userSignupValidator, runValidation, signup);
 router.post("/account-activation", accountActivation);

@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const sgMail = require("@sendgrid/mail");
-
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.signup = async (req, res) => {
   try {
