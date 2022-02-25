@@ -26,8 +26,10 @@ function Home() {
       visible={isModalVisible}
       onOk={handleOk}
       onCancel={handleCancel}
+      footer={null}
     >
       <SignUpForm />
+    
     </Modal>
   );
 
