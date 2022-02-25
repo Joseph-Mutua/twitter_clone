@@ -1,14 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import TwitterArt from "../components/images/TwitterArt.png";
-import Icon, { GoogleOutlined, AppleFilled } from "@ant-design/icons";
-import { Button } from "antd";
+import Icon, { AppleFilled } from "@ant-design/icons";
+import { Modal, Button } from "antd";
+import SignUpForm from "../components/forms/SignUpForm";
 
 function Home() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const signUpModal = () => (
+    <Modal
+      title="Create Your Account"
+      visible={isModalVisible}
+      onOk={handleOk}
+      onCancel={handleCancel}
+    >
+      <SignUpForm />
+    </Modal>
+  );
+
   const GoogleIcon = () => (
     <Icon
       component={() => (
-        <img src="https://img.icons8.com/fluency/20/000000/google-logo.png" />
+        <img
+          alt="Google Icon"
+          src="https://img.icons8.com/fluency/20/000000/google-logo.png"
+        />
       )}
     />
   );
@@ -18,6 +47,7 @@ function Home() {
       <div className="row align-items-center">
         <div className="col-md-7">
           <img
+            alt="Twitter homepage art"
             className="img-fluid"
             style={{ height: "100vh" }}
             src={TwitterArt}
@@ -25,7 +55,10 @@ function Home() {
         </div>
 
         <div className="col-md-5">
-          <img src="https://img.icons8.com/color/96/000000/twitter--v1.png" />
+          <img
+            alt="Twitter Icon"
+            src="https://img.icons8.com/color/96/000000/twitter--v1.png"
+          />
           <h1 className="mb-4" id="lead">
             Happening now
           </h1>
@@ -43,7 +76,6 @@ function Home() {
             >
               Sign Up with Google
             </Button>
-
             <Button
               className="mb-3"
               block
@@ -53,10 +85,16 @@ function Home() {
             >
               Sign Up with Apple
             </Button>
-
-            <Button className="mb-3" block shape="round" size="large">
+            <Button
+              onClick={showModal}
+              className="mb-3"
+              block
+              shape="round"
+              size="large"
+            >
               Sign Up with Phone or Email
             </Button>
+            {signUpModal()}
 
             <div class="form-text mb-4">
               By signing up, you agree to the{" "}
@@ -64,7 +102,9 @@ function Home() {
               <Link to="#">Privacy Policy</Link>, including{" "}
               <Link to="#">Cookie Use</Link>.
             </div>
-            <p>Already have an account? <Link to="#">Sign in</Link></p>
+            <p>
+              Already have an account? <Link to="#">Sign in</Link>
+            </p>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginForm from '../../components/forms/LoginForm';
+import SignUpForm from '../../components/forms/SignUpForm';
 
 const Login = () => {
     return (
@@ -7,7 +7,7 @@ const Login = () => {
         <div className="row">
           <div className="col-md-4 m-auto">
             <h1 className="m-4 text-center">Login Page</h1>
-            <LoginForm />
+            <SignUpForm />
           </div>
         </div>
       </div>
